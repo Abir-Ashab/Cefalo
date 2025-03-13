@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="https://f6e7-103-143-91-25.ngrok-free.app/img">
+    <img src="https://cefalo-two.vercel.app/img">
     <button id="btn">Login</button>
 
     <script>
@@ -17,7 +17,7 @@
         }
 
         btn.addEventListener("click", e => {
-            fetch("https://f6e7-103-143-91-25.ngrok-free.app/login", {
+            fetch("https://cefalo-two.vercel.app/login", {
                 method: "POST",
                 credentials: "include" // Ensures cookies are sent
             }).then(a => a.text()).then(console.log);
