@@ -142,3 +142,4 @@ alert(Symbol.keyFor(localSymbol));
 
 - Global symbols can be looked up using `Symbol.keyFor`.
 - Local symbols created with `Symbol()` are not in the registry and can't be retrieved this way.
+

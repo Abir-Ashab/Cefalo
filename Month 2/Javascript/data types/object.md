@@ -82,8 +82,8 @@ console.log(myObj[""]);
 - Logs the value stored under the empty string key.
 
 ```javascript
-// console.log(myObj."date created"); // ❌ Syntax error due to space
-console.log(myObj["date created"]); // ✅ Correct way using bracket notation
+// console.log(myObj."date created"); //  Syntax error due to space
+console.log(myObj["date created"]); //  Correct way using bracket notation
 ```
 
 ---
