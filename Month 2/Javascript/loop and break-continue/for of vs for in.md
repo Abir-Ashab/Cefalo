@@ -35,7 +35,7 @@ for (const fruit of fruits) {
 ---
 
 ### Common Mistake:
-Using `for...in` on arrays. It will loop through **indexes** (as strings), **not** values, and may include prototype properties.
+Using `for...in` on arrays. It will loop through **indexes** (as strings) and enumerable objects, **not** values, and may include prototype properties.
 
 ```javascript
 const arr = ['a', 'b', 'c'];
@@ -43,6 +43,15 @@ const arr = ['a', 'b', 'c'];
 for (const index in arr) {
   console.log(index);     // 0, 1, 2
   console.log(arr[index]); // a, b, c
+}
+```
+```javascript
+let object = {
+  key1: "value1",
+  key2: "value2"
+}
+for (const index in object) {
+  console.log(index); // key1, key2
 }
 ```
 

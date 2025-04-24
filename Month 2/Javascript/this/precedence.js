@@ -20,7 +20,7 @@ const user = {
     name: "User",
     talk: talk.bind({ name: "Bound" })
 };  
-user.talk(); // User – bind() takes precedence over object method
+user.talk(); // User – as bind() takes precedence over object method
   
 
 const globalName = "Global";

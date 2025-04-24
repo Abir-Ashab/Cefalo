@@ -22,3 +22,13 @@ console.log(0 / 0 === NaN); // false, because NaN is not equal to itself
 
 Object.is(NaN, 0 / 0); // true
 Object.is(NaN, Number.NaN); // true
+
+// SameValue Zero Algorithm - Same-value-zero only differs from strict equality by treating NaN as equivalent, and only differs from same-value equality by treating -0 as equivalent to 0
+function sameValueZero(x, y) {
+    if (typeof x === "number" && typeof y === "number") {
+      // x and y are equal (may be -0 and 0) or they are both NaN
+      return x === y || (x !== x && y !== y);
+    }
+    return x === y;
+}
+console.log(sameValueZero(NaN, NaN)); // true
