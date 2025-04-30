@@ -2,7 +2,7 @@
 
 ```js
 let lib = {
-    name: "ABC",
+  name: "ABC",
 };
 
 lib["id"] = 5;
@@ -11,7 +11,7 @@ lib["id"] = 6; // The value is changed because it is a String KEY!
 lib[Symbol("id")] = 123;
 lib[Symbol("id")] = 124; // Not changed
 
-console.log(lib); 
+console.log(lib);
 // Output:
 // { name: "ABC", id: 6, Symbol(id): 123, Symbol(id): 124 }
 ```
@@ -29,13 +29,13 @@ console.log(lib);
 ```js
 let id = Symbol("id");
 
-alert(id); 
+alert(id);
 // Throws: TypeError: Cannot convert a Symbol value to a string
 
-alert(id.toString()); 
+alert(id.toString());
 // Output: Symbol(id)
 
-alert(id.description); 
+alert(id.description);
 // Output: id
 ```
 
@@ -50,8 +50,8 @@ alert(id.description);
 
 ```js
 let user = {
-    name: "John",
-    [id]: 123 // using a symbol as a property key
+  name: "John",
+  [id]: 123, // using a symbol as a property key
 };
 ```
 
@@ -65,7 +65,7 @@ let user = {
 ## 4. Enumerating Object Properties
 
 ```js
-for (let key in user) alert(key); 
+for (let key in user) alert(key);
 // Only outputs: "name"
 ```
 
@@ -79,7 +79,7 @@ for (let key in user) alert(key);
 ## 5. Accessing Symbol Properties Directly
 
 ```js
-alert("Direct: " + user[id]); 
+alert("Direct: " + user[id]);
 // Output: Direct: 123
 ```
 
@@ -92,10 +92,10 @@ alert("Direct: " + user[id]);
 ## 6. Global Symbols: Shared Across the Codebase
 
 ```js
-let globalSym = Symbol.for("id"); 
-let idAgain = Symbol.for("id"); 
+let globalSym = Symbol.for("id");
+let idAgain = Symbol.for("id");
 
-alert(globalSym === idAgain); 
+alert(globalSym === idAgain);
 // Output: true
 ```
 
@@ -112,10 +112,10 @@ alert(globalSym === idAgain);
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
-alert(Symbol.keyFor(sym)); 
+alert(Symbol.keyFor(sym));
 // Output: name
 
-alert(Symbol.keyFor(sym2)); 
+alert(Symbol.keyFor(sym2));
 // Output: id
 ```
 
@@ -129,12 +129,12 @@ alert(Symbol.keyFor(sym2));
 
 ```js
 let globalSymbol = Symbol.for("name"); // Global symbol
-let localSymbol = Symbol("name");      // Local symbol
+let localSymbol = Symbol("name"); // Local symbol
 
-alert(Symbol.keyFor(globalSymbol)); 
+alert(Symbol.keyFor(globalSymbol));
 // Output: name
 
-alert(Symbol.keyFor(localSymbol)); 
+alert(Symbol.keyFor(localSymbol));
 // Output: undefined
 ```
 
@@ -142,4 +142,54 @@ alert(Symbol.keyFor(localSymbol));
 
 - Global symbols can be looked up using `Symbol.keyFor`.
 - Local symbols created with `Symbol()` are not in the registry and can't be retrieved this way.
+
+### Can we iterate **over a Symbol** itself?
+
+Nope. A `Symbol` is a _primitive_ — it doesn’t hold multiple values or properties like an object or array.
+
+```js
+const sym = Symbol("test");
+
+for (let val of sym) {
+  //  TypeError: sym is not iterable
+}
+```
+
+---
+
+### But here's where your thinking is on point:
+
+You **can attach an iterator to an object using `Symbol.iterator`**, and you can even use a **Symbol as a key** in a custom object you want to iterate over.
+
+---
+
+### Example: Using `Symbol.iterator` to make a custom object iterable
+
+```js
+const secretKey = Symbol("key");
+
+const secretObject = {
+  [secretKey]: ["one", "two", "three"],
+  [Symbol.iterator]() {
+    let index = 0;
+    const values = this[secretKey];
+    return {
+      next() {
+        return index < values.length
+          ? { value: values[index++], done: false }
+          : { done: true };
+      },
+    };
+  },
+};
+
+for (let val of secretObject) {
+  console.log(val); // one, two, three
+}
+```
+
+Here:
+
+- `Symbol.iterator` makes the object iterable.
+- `secretKey` is a Symbol used to hold internal data (a private-ish property).
 

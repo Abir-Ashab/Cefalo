@@ -63,3 +63,16 @@ console.log(rest); // [30, 40, 50]
   const { b = 2 } = { b: undefined }; // b is 2
   const { c = 2 } = { c: null }; // c is null, so it is not assigned to 2
 }
+
+
+// swapping variables using destructuring
+{
+  let a = 1;
+  let b = 2;
+  [a, b] = [b, a]; // Swapping using destructuring
+  // Here is how it works:
+  // 1. Create a temporary array [b, a] = [2, 1] as it first evaluates the right side
+  // 2. Then destructure the array into a and b
+  console.log(a); // 2
+  console.log(b); // 1
+}
