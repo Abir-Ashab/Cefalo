@@ -15,16 +15,6 @@ class Car {
     }
 }
 
-// In JS, we can't extend a class and override a method. But in ts, we can use extends keyword to extend a class and override a method.
-class vehicle extends Car {
-    constructor(brand: string, mileage: number) {
-        super(brand, mileage);
-    }
-    public drive() {
-        console.log("Vehicle is Driving...");
-    }
-}
-
 //  TS allows multiple inheritance through interfaces.
 //  In JS, we can only extend one class.
 interface Flyable {

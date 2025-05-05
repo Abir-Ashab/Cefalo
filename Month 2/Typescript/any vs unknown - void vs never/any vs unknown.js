@@ -7,6 +7,7 @@
     var anyValue = 123;
     var str1 = anyValue; // OK
 }
+
 // unknown --> "I don’t know the type yet, so I'll treat it carefully."
 {
     var value = "Hello";

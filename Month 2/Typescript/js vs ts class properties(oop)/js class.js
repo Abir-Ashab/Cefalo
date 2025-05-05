@@ -10,6 +10,15 @@ class Car {
     }
 }
 
+class vehicle extends Car {
+  constructor(brand, mileage) {
+      super(brand, mileage);
+  }
+  drive() {
+      console.log("Vehicle is Driving...");
+  }
+}
+
 class A {}
 class B {}
 //   class C extends A, B {} //  SyntaxError --> as JS does not support multiple inheritance

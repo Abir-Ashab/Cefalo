@@ -3,15 +3,19 @@ interface Person {
     name: string;
     age: number;
 }
+
+interface Person {
+    nationality: string;
+}
+
 const user: Person = {
     name: "Alice",
-    age: 30
+    age: 30,
+    nationality: "American"
 };
-interface Person {
-    nationality: string; 
-}
-user.nationality = "American"; 
+
 console.log(user.nationality); // Output: American
+
 
 
 // declaration merging with type
@@ -23,3 +27,24 @@ type PersonType = {
 // type PersonType = {
 //     nationality: string;
 // }
+
+// Interface
+interface Person2 {
+    name: string;
+}
+  
+interface Employee2 extends Person2 {
+    employeeId: number;
+}
+  
+  // Type alias with intersection
+type PersonAlias = {
+    name: string;
+};
+  
+type EmployeeAlias = PersonAlias & {
+    employeeId: number;
+};
+  
+
+
