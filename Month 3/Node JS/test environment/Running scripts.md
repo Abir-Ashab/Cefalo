@@ -1,0 +1,1 @@
+- To run the echo script, run npm run echo from the command line. Arbitrary scripts, such as echo above, have to be be run with `npm run echo`

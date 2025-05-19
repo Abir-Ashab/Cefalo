@@ -1,0 +1,12 @@
+{
+  "name": "test-environment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "echo": "echo Hello from echo",
+    "start": "pm2 start index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
