@@ -8,8 +8,53 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Post {
+  id             Int            @id @default(autoincrement())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  title          String         @db.VarChar(255)
+  content        String?
+  published      Boolean        @default(false)
+  author         User           @relation(fields: [authorId], references: [id])
+  authorId       Int
+  postCategories PostCategory[] // relation to PostCategory
+
+  @@map("posts") // change the model name
 }
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  // role    UserRole 
+  posts   Post[] // one to many relation
+  profile Profile? // one to one relation
+}
+
+model Category {
+  id             Int            @id @default(autoincrement())
+  category       String
+  postCategories PostCategory[] // relation to PostCategory 
+}
+
+// So now, we need to create many to many reltion (many posts have many categories, many categories have many posts). And the simplest way is to create another table where we will take the primary key of both table and make a composite key. 
+model PostCategory {
+  postId     Int
+  post       Post     @relation(fields: [postId], references: [id])
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([postId, categoryId]) // composite key
+}
+
+// enum UserRole{
+//   user
+//   admin
+// }

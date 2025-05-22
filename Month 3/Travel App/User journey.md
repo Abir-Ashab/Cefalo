@@ -1,18 +1,16 @@
-# Complete User Journeys & Features
-
 ## 1. EXPLORER JOURNEY
 
 ### Initial Entry (Guest/Anonymous)
 **Landing Experience:**
-- Browse featured travel posts without account
-- View public wishlists and popular destinations
+- Browse featured public travel posts without account
+- View public wishlists and popular destinations (counts diye decide korbo)
 - Search destinations and read travel experiences
-- See "Sign up to save posts" prompts on interesting content
+- Can't read the full travel blog without any account (see more...)
 
 **Registration Trigger:**
+- See "Sign up to save posts" prompts on interesting content(like "amazing destination, great restaurant recommendation" --> get this keywords using reGex or LLM from the travel story)
+- After clicking see more, "sign up to see more"
 - Wants to like a post → "Sign up to like and save posts"
-- Finds amazing destination → "Create account to add to wishlist"
-- Sees great restaurant recommendation → "Save this for later - sign up now"
 
 ### Explorer Features (Post-Signup)
 
@@ -26,37 +24,19 @@
 
 **Basic Engagement:**
 - Like posts (with reaction analytics)
-- Save posts to personal collections
+- Save posts to personal collections 
 - Basic commenting (max 2 comments per post)
-- Follow up to 10 travelers
 - Share posts via social media/email
 
 **Simple Wishlist:**
-- Create up to 3 wishlist collections
-- Add up to 50 destinations total
+- Add up to 50 destinations total in the wishlist
 - Basic notes per destination
-- View wishlist on map
-- Get basic recommendations based on saved items
-- No collaborative wishlists
-- No priority ranking
-- No advanced planning tools
-
-**Discovery Features:**
-- View "People also liked" suggestions
-- Get destination recommendations
-- See seasonal travel suggestions
-- Basic proximity notifications (1km radius only)
-- Find public events near saved destinations
-
-### Explorer Upgrade Prompts
+- View wishlist on map(what is this and how to implement?)
 
 **Soft Upgrade Triggers:**
 - After saving 15 posts: "Love collecting travel ideas? Upgrade to share your own!"
 - When trying to comment more: "Upgrade to Traveler for unlimited comments"
 - Viewing detailed trip costs: "Share your own budget breakdowns as a Traveler"
-
-**Hard Feature Limits:**
-- Creating 4th wishlist collection → Upgrade required
 - Trying to create travel post → "Become a Traveler to share experiences"
 - Attempting group planning → "Travelers can organize group trips"
 
@@ -94,36 +74,22 @@
 - Priority ranking and trip planning
 - Budget estimation and planning tools
 - Best time to visit recommendations
-- Advanced notes and research links
-- Import from external sources
 - Calendar integration for trip planning
 
 **Social & Networking:**
-- Unlimited follows and connections
 - Advanced matchmaking based on travel style
 - Group trip planning and coordination
-- Private messaging and group chats
-- Travel buddy verification system
-- Host local meetups and events
-- Mentor new travelers
 
 **Enhanced Discovery:**
 - AI-powered personalized recommendations
 - Advanced filtering and search
 - Price alerts for tracked destinations
 - Weather-based travel suggestions
-- Local insider tips and hidden gems
-- Cultural event and festival notifications
 
 **Location Services:**
 - Proximity notifications (customizable radius)
 - Real-time service discovery (hotels, transport, restaurants)
-- Route optimization and multi-modal planning
-- Offline map downloads
-- Emergency services integration
 - Local currency and language tools
-
-### Traveler-Specific Workflows
 
 **Creating Travel Posts:**
 1. **Post Setup**: Choose destination, dates, travel style
@@ -149,11 +115,10 @@
 4. **Real-time Updates**: Itinerary changes, weather alerts, local events
 
 **Matchmaking & Networking:**
-1. **Profile Matching**: Algorithm finds compatible travelers
-2. **Compatibility Scoring**: Based on destinations, dates, budget, style
-3. **Introduction System**: Structured messaging for trip planning
-4. **Verification Process**: Profile verification for safety
-5. **Group Formation**: Multi-person trip coordination
+- Algorithm finds compatible travelers
+- Based on destinations, dates, budget, style
+- Structured messaging for trip planning
+- Multi-person trip coordination
 
 ---
 
@@ -161,12 +126,11 @@
 
 ### Admin Account Creation
 **Invitation-Only Process:**
-1. Existing admin sends invitation email
-2. Invited user receives secure signup link
-3. Account creation with admin role pre-assigned
-4. Mandatory admin training and guidelines review
-5. Two-factor authentication setup required
-6. Admin dashboard access granted
+- Existing admin sends invitation email
+- Invited user receives secure signup link
+- Account creation with admin role pre-assigned
+- Mandatory admin training and guidelines review
+- Admin dashboard access granted
 
 ### Admin Features (Complete Control)
 
@@ -185,88 +149,31 @@
 - Account suspension and reactivation
 - User verification and trust scoring
 - Activity monitoring and analytics
-- Support ticket management
 - User feedback and complaint handling
 
 **Platform Analytics:**
-- User engagement metrics
-- Content performance analytics
-- Geographic usage patterns
 - Popular destination trends
-- Revenue and cost analytics
 - API usage monitoring
-- System performance metrics
 
 **System Configuration:**
-- Third-party API management
-- Feature flag management
-- System settings and configurations
-- Database maintenance tools
+- Third-party API management (?)
 - Backup and recovery management
-- Security monitoring
 - Performance optimization
 
 **Community Management:**
 - Broadcast notifications to all users
 - Create community challenges and events
 - Manage featured travelers and content
-- Organize virtual and physical meetups
-- Handle disputes and conflicts
 - Community feedback collection
 
-### Admin-Specific Workflows
-
 **Daily Moderation Routine:**
-1. **Morning Review**: Check overnight flagged content
-2. **Content Curation**: Select featured posts and destinations
-3. **User Issues**: Handle support tickets and complaints
-4. **Analytics Review**: Monitor key platform metrics
-5. **System Health**: Check API status and performance
+- Check overnight flagged content
+- Select featured posts and destinations
+- Check API status and performance
 
 **Content Quality Management:**
-1. **Automated Flagging**: AI identifies potentially problematic content
-2. **Review Queue**: Moderators assess flagged items
-3. **Decision Making**: Approve, request changes, or remove content
-4. **User Communication**: Provide feedback on content decisions
-5. **Appeals Process**: Handle content removal appeals
-
-**User Lifecycle Management:**
-1. **New User Onboarding**: Monitor registration quality
-2. **Role Upgrades**: Review Explorer to Traveler upgrade requests
-3. **Community Building**: Identify and promote active members
-4. **Conflict Resolution**: Mediate disputes between users
-5. **Account Management**: Handle suspensions and reactivations
-
----
-
-## 4. Cross-User Feature Matrix
-
-| Feature | Explorer | Traveler | Admin |
-|---------|----------|----------|-------|
-| Browse Posts | Public only | All posts | All + private |
-| Create Posts | | Unlimited | + Featured |
-| Wishlist Items | 50 max | Unlimited | + Analytics |
-| Group Planning | | Full access | + Oversight |
-| Messaging | | Unlimited | + Monitoring |
-| Comments | 2 per post | Unlimited | + Moderation |
-| Follows | 10 max | Unlimited | + User insights |
-| Proximity Alerts | 1km only | Customizable | + System wide |
-| API Access | | | Full access |
-| Analytics | Basic personal | Personal detailed | Platform wide |
-
-## 5. Feature Progression & Upgrade Incentives
-
-**Explorer → Traveler Upgrade Benefits:**
-- "Share your amazing trips with the community"
-- "Plan group trips with friends and colleagues"
-- "Get personalized AI recommendations"
-- "Access advanced travel planning tools"
-- "Connect with unlimited travel buddies"
-
-**Traveler → Admin (Invitation Only):**
-- "Help shape the community experience"
-- "Get early access to new features"
-- "Contribute to platform improvement"
-- "Recognition as community leader"
-
-This structure ensures each user type has a clear value proposition while encouraging natural progression through engagement and feature discovery.
+- AI identifies potentially problematic content
+- Assess flagged items
+- Approve, request changes, or remove content
+- Provide feedback on content decisions
+- Handle content removal appeals
