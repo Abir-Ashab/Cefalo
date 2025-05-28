@@ -26,7 +26,7 @@
 
 ---
 
-### Summary
+### Summary 
 
 | Feature          | `process.stdout.write()`     | `process.stderr.write()`  | `console.log()`         |
 | ---------------- | ---------------------------- | ------------------------- | ----------------------- |

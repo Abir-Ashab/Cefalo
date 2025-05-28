@@ -8,6 +8,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  
   "description": "",
   "devDependencies": {
     "@types/node": "^22.15.21",

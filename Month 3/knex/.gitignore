@@ -1,0 +1,25 @@
+node_modules/
+# Logs
+logs/
+npm-debug.log*
+# Environment variables
+.env
+# Build output
+dist/
+
+# Coverage directory used by tools like istanbul
+coverage/
+# Dependency directories
+bower_components/
+# Optional npm cache directory
+.npm
+# Optional REPL history
+.repl
+# Optional eslint cache
+.eslintcache
+# Optional stylelint cache
+.stylelintcache
+# Optional cache directory for prettier
+.prettier-cache
+
+package-lock.json
