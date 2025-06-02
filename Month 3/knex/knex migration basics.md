@@ -98,18 +98,47 @@ If you **change an existing migration file**, here's what happens: **Knex will N
 
 * Just create a new migration file to modify your schema.
 
-```bash
-npx knex migrate:make add_column_to_users
+Here is a example:
+
+**Initially:**
+```java
+exports.up = function(knex) {
+  return knex.schema.createTable('users', function(table) {
+    table.increments('id');
+    table.string('name');
+    table.integer('age').unique();
+    table.timestamps(true, true);
+    table.string('email').notNullable().unique();
+  });
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTable('users');
+};
+```
+And now I want to change on the above migration file, and add `password` field. So I will now create a new migration file by `npx knex migrate:make new_file_name`, and add the following code there: 
+
+```java
+exports.up = function(knex) {
+  return knex.schema.alterTable('users', function(table) {
+    table.string('password').notNullable();
+  });
+};
+
+exports.down = function(knex) {
+  return knex.schema.table('users', function(table) {
+    table.dropColumn('password');
+  });
+};
 ```
 
-* In that file, add code to update the schema (e.g., `table.string('new_column')`)
-* Run:
+* Now run:
 
 ```bash
 npx knex migrate:latest
 ```
 
-#### Option 2: **Rollback and re-run the migration** (Dev-only, not reommended in production level)
+#### Option 2: **Rollback and re-run the migration** (It will replace the previous one, so no trace of the previous)
 
 If you're in development and want to re-run the same migration file:
 
@@ -129,7 +158,7 @@ If you're in development and want to re-run the same migration file:
 
 ---
 
-### Option 3: **Manually delete from `_knex_migrations` table** 
+### Option 3: **Manually delete from `_knex_migrations` table**  (Same as previous I will not be able to trace)
 
 You can run a SQL query to delete that file’s record from `_knex_migrations`, then run `migrate:latest` again:
 

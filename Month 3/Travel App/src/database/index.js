@@ -2,7 +2,6 @@ const DatabaseFactory = require('./factories/DatabaseFactory');
 
 module.exports = {
   DatabaseFactory,
-
   initialize: () => DatabaseFactory.initialize(),
   getConnection: () => DatabaseFactory.getConnection(),
   disconnect: () => DatabaseFactory.disconnect(),

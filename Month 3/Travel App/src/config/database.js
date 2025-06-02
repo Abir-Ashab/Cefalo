@@ -1,15 +1,15 @@
+require('dotenv').config();
 module.exports = {
-  // ORM/Query Builder Selection
-  orm: process.env.DB_ORM || 'knex', // knex, prisma, typeorm, mongoose
+  orm: process.env.DB_ORM || 'knex',
   
   // Database Type
-  type: process.env.DB_TYPE || 'postgresql', // postgresql, mysql, sqlite, mongodb
+  type: process.env.DB_TYPE || 'postgresql', 
   
   // Database Configurations
   postgresql: {
     host: process.env.PG_HOST || 'localhost',
     port: parseInt(process.env.PG_PORT) || 5432,
-    database: process.env.PG_DATABASE || 'mydb',
+    database: process.env.PG_DATABASE || 'travel app',
     user: process.env.PG_USER || 'postgres',
     password: process.env.PG_PASSWORD || '312889',
     ssl: process.env.PG_SSL === 'true' ? { rejectUnauthorized: false } : false,

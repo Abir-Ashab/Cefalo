@@ -21,7 +21,7 @@ class KnexConnection extends IDatabaseConnection {
       await this.testConnection();
       
       this.connected = true;
-      console.log(`✅ Successfully connected to ${dbConfig.type} database using Knex`);
+      console.log(`Successfully connected to ${dbConfig.type} database using Knex`);
       
       return this.client;
     } catch (error) {
@@ -35,7 +35,7 @@ class KnexConnection extends IDatabaseConnection {
       if (this.client) {
         await this.client.destroy();
         this.connected = false;
-        console.log('✅ Knex database connection closed');
+        console.log('Knex database connection closed');
       }
     } catch (error) {
       throw new Error(`Failed to disconnect Knex: ${error.message}`);
@@ -90,9 +90,9 @@ class KnexConnection extends IDatabaseConnection {
       const [batch, migrations] = await this.client.migrate.latest();
       
       if (migrations.length === 0) {
-        console.log('✅ No migrations to run');
+        console.log('No migrations to run');
       } else {
-        console.log(`✅ Ran ${migrations.length} migrations in batch ${batch}`);
+        console.log(`Ran ${migrations.length} migrations in batch ${batch}`);
         migrations.forEach(migration => {
           console.log(`  - ${migration}`);
         });
@@ -112,9 +112,9 @@ class KnexConnection extends IDatabaseConnection {
       const [batch, migrations] = await this.client.migrate.rollback();
       
       if (migrations.length === 0) {
-        console.log('✅ No migrations to rollback');
+        console.log('No migrations to rollback');
       } else {
-        console.log(`✅ Rolled back ${migrations.length} migrations from batch ${batch}`);
+        console.log(`Rolled back ${migrations.length} migrations from batch ${batch}`);
         migrations.forEach(migration => {
           console.log(`  - ${migration}`);
         });
