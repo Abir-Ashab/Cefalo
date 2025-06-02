@@ -1,4 +1,4 @@
-# Demystifying Database Migrations: Why Every Developer Needs to Master Them
+# Database Migrations: The Git for Your Schema Changes
 
 If you're tired of keeping track of your database schemas manually, if you ever thought that it would be better if you could track database schemas exactly like Git, then yeah, you are not alone. The comparison with Git isn't just a metaphor anymore. Migration systems, especially in frameworks like Prisma, Django, or tools like Knex enable Git-like tracking of your database evolution. This systematic approach transforms chaotic schema management into a streamlined, version-controlled process that teams can rely on. 
 
@@ -28,6 +28,7 @@ Knex.js offers powerful migration capabilities that provide several key benefits
 - **Flexible editing**: Instead of editing old migration files, create new migration files to evolve your schema safely
 
 Let's take a hands-on look at how migrations work with Knex.js, a popular SQL query builder for JavaScript that also manages migrations.
+![alt text](image.png)
 
 ### 1. Initialize Knex
 
