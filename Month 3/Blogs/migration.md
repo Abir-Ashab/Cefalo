@@ -1,4 +1,4 @@
-# Demystifying Database Migrations: Why Every Developer Needs to Master Them
+# Database Migrations: The Git for Your Schema Changes
 
 If you're tired of keeping track of your database schemas manually, if you ever thought that it would be better if you could track database schemas exactly like Git, then yeah, you are not alone. The comparison with Git isn't just a metaphor anymore. Migration systems, especially in frameworks like Prisma, Django, or tools like Knex enable Git-like tracking of your database evolution. This systematic approach transforms chaotic schema management into a streamlined, version-controlled process that teams can rely on. 
 
@@ -106,7 +106,7 @@ Additional rollback commands:
 - `npx knex migrate:rollback --all` to roll back all migration files
 - `npx knex migrate:rollback --step=2` to roll back a specific number of batches
 
-### Understanding Batches in Knex
+#### Understanding Batches in Knex
 
 In Knex, a batch is a group of migration files that are applied together in one `migrate:latest` command. For example:
 
