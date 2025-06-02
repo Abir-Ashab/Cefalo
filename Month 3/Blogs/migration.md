@@ -107,7 +107,7 @@ Additional rollback commands:
 - `npx knex migrate:rollback --all` to roll back all migration files
 - `npx knex migrate:rollback --step=2` to roll back a specific number of batches
 
-### Understanding Batches in Knex
+#### Understanding Batches in Knex
 
 In Knex, a batch is a group of migration files that are applied together in one `migrate:latest` command. For example:
 
