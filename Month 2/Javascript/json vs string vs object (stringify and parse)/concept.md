@@ -1,4 +1,3 @@
-```markdown
 # JSON Parse vs Stringify in JavaScript
 
 When working with `localStorage` or making HTTP requests (especially using `fetch`), we cannot directly store or send JavaScript objects. Instead, we must convert them to strings—specifically, **JSON strings**.
@@ -27,7 +26,6 @@ Into:
 
 This string can now be safely stored or sent in a request.
 
----
 
 ## Why Use `JSON.parse()`
 
