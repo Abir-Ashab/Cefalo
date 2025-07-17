@@ -1,0 +1,106 @@
+
+body {
+    background: rgb(220, 221, 226);
+    min-height: 100vh; /* The content has atleast 100vh height */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    /* justify-content and align-items are specifically designed for Flexbox */
+}
+
+
+@media (max-width: 374px) {
+    body {
+        display: none;
+    }
+}
+
+.container {
+    width: 100%; /* Full width of the viewport */
+    max-width: 650px; /* reduce it to a smaller size */
+    padding: 20px; 
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+
+.weather-app {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px; /* Rounded corners by 10 px*/
+    padding: 30px;
+}
+
+.search-container {
+    margin-bottom: 25px;
+    display: flex; /* Use flexbox to align items in a row */
+    justify-content: center; /* Center the items horizontally */
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px; /* 12px top and bottom, 20px left and right */
+    background-color: #0083b0;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right side where the 0 represents the top left corner, 5px represents the top right corner, 5px represents the bottom right corner, and 0 represents the bottom left corner */
+    cursor: pointer; /* Pointer/hand cursor on hover */
+    font-size: 16px;
+}
+button:hover {
+    background-color: #006b8f;
+}
+.weather-container {
+    text-align: center;
+}
+
+.city-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.temperature {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #0083b0;
+}
+
+.weather-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+    text-transform: capitalize;
+}
+.weather-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* padding-top: 20px; */
+    border-top: 1px solid #eee;
+}
+
+.detail {
+    align-items: center;
+    width: 50%;
+}
+
+.error-container {
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    display: none;
+}

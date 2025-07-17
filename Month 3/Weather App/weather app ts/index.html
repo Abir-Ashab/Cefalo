@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    #map { height: 90vh; }
+    #weather-info { background-color: aqua; color: brown; position: absolute; left: 100px; padding: 10px; z-index: 500; }
+    button {
+      padding: 12px 20px; /* 12px top and bottom, 20px left and right */
+      background-color: #0083b0;
+      color: white;
+      border: 1px solid #ddd;
+      border-radius: 0 5px 5px 0; /* Rounded corners on the right side where the 0 represents the top left corner, 5px represents the top right corner, 5px represents the bottom right corner, and 0 represents the bottom left corner */
+      cursor: pointer; /* Pointer/hand cursor on hover */
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #006b8f;
+    }
+  </style>
+</head>
+<body>
+
+<div id="weather-info">Click to see weather data</div>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="./dist/components/api/map.js"></script>
+<a href="./public/search.html" >
+  <button> Search by city</button>
+</a>
+</body>
+</html>

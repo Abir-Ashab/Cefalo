@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    
+    <div class="container">
+        <a href="../index.html" >
+            <button>Back to home</button>
+        </a>
+            <!-- <a href="/contact" onclick="navigateTo('/contact'); return false;">Contact</a> -->
+        <div class="weather-app">
+            <h1>Weather App</h1>
+            <div class="search-container">
+                <input type="text" id="city-input" placeholder="Enter city name...">
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="error-container" id="error-container"></div>
+            <div class="weather-container" id="weather-container">
+                <div class="city-name" id="city-name"></div>
+                <div class="temperature" id="temperature"></div>
+                <div class="weather-description" id="weather-description"></div>
+                <div class="weather-details">
+                    <div class="detail">
+                        <h4>Humidity</h4>
+                        <h4 id="humidity"></h4>
+                    </div>
+                    <div class="detail">
+                        <h4>Wind Speed</h4>
+                        <h4 id="wind-speed"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script type="module" src="../src/app.js"></script>
+</body>
+</html>
