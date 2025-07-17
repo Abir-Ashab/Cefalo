@@ -1,18 +1,18 @@
 # Database Migrations: The Git for Your Schema Changes
 
-If you're tired of keeping track of your database schemas manually, if you ever thought that it would be better if you could track database schemas exactly like Git, then yeah, you are not alone. The comparison with Git isn't just a metaphor anymore. Migration systems, especially in frameworks like Prisma, Django, or tools like Knex enable Git-like tracking of your database evolution. This systematic approach transforms chaotic schema management into a streamlined, version-controlled process that teams can rely on. 
+If you've ever worked on a team project with a constantly changing database, you know the pain of manually updating the schema—adding columns, changing data types, and trying to keep everything in sync across dev and production. It's easy to lose track of what changed and when. Wouldn’t it be better if schema changes worked like Git commits—versioned, trackable, and reviewable? You're not alone. That Git-like approach is real now. Tools like Prisma, Django, and Knex offer migration systems that bring version control to your database. They turn messy schema updates into a smooth, reliable, and team-friendly workflow. In this article, I walk you through how migration systems work under the hood, why they matter, and how tools like Prisma and Knex bring Git-like version control to your database schema.
 
 ## The Magic Behind Migration Generation
 
 If you've worked with Prisma previously, you might wonder how migration files get created. Perhaps you've asked yourself this question millions of times: how does a single Prisma command turn your schema changes into migration files? It might seem like magic that with just one command, your database schema updates itself perfectly, but there's a whole intelligent system behind it.
 
-Migration files are not just random scripts; they are carefully generated blueprints that describe exactly what changes your database needs, whether it's adding a new table, modifying a column, or removing an index. Prisma watches the difference between your current schema and the last applied schema, then generates a migration file reflecting those changes. It's like Prisma is your architect: you design the blueprint (the schema), and Prisma drafts the construction plan (the migration file) automatically.
+Migration files are not just random scripts; they are carefully generated blueprints that describe exactly what changes your database needs, whether it's adding a new table, modifying a column, or removing an index. Prisma watches the difference between your current schema and the last applied schema, then generates a migration file reflecting those changes. It's like Prisma is your architect: you design the blueprint (the schema), and Prisma drafts the construction plan (the migration file) automatically. There are more ORMs where you need to write migration files manually. 
 
 ## Understanding Migration File Naming Conventions
 
-You might be familiar with the above concepts and understand the reasons behind them. But you may have noticed that migration files are created with some jumbled random numbers that don't make any sense and appear to be auto-generated numbering sequences. However, there's more to this than meets the eye. 
+You might be familiar with the above concepts and understand the reasons behind them. Ever noticed how migration files have those weird-looking, random numbers in their names? They might seem meaningless at first, but there’s more going on than you think.
 
-These are not just arbitrary unique numbers—they add tremendous value. Each migration file is named in a way that captures the exact time of its creation, creating a clear timeline of changes. This naming convention allows you to easily see what changed and when, move forward or backward between versions, and collaborate seamlessly with your team, making database evolution as manageable as code versioning.
+These are not just arbitrary-unique numbers; they add meaningful value. Each migration file is named in a way that captures the exact time of its creation, creating a clear timeline of changes. This naming convention allows you to easily see what changed and when, move forward or backward between versions, and collaborate seamlessly with your team, making database evolution as manageable as code versioning.
 
 ## Why Migrations Matter: Structure Over Flexibility
 
