@@ -10,6 +10,7 @@ function log(message: string): void {
     console.log(message);
     return undefined// optional
 }
+
 // Sometimes it can return null.
 function logMessageWithNull(message: string): void {
     console.log(message);

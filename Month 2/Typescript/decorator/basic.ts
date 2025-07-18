@@ -10,7 +10,7 @@ function SimpleLogger(constructor: any) { // receiving the constructor as any wh
 //     console.log("A class was defined: " + constructor);
 // }
 
-@SimpleLogger// just like SimpleLogger(Car) ---> passing the car constructor to the SimpleLogger function
+@SimpleLogger // just like SimpleLogger(Car) ---> passing the car constructor to the SimpleLogger function
 class Car {
     brand: string;
   
@@ -23,13 +23,13 @@ class Car {
 
 
 // We can also use the decorator in other locations, like in a function or property
-
 {
-    function SimpleLogger2(constructor: any, name: string) { // receiving the constructor as any which is the class itself, the functions, properties, etc. so it is valid
+    function SimpleLogger2(constructor: any, name: string) { 
         console.log("A class was defined: " + name ); 
     }
+
     class Car {
-        @SimpleLogger2
+        @SimpleLogger2 // 
         brand: string;
     
         constructor(brand: string) {
@@ -37,4 +37,5 @@ class Car {
             console.log("hello from the constructor of Car class", this.brand);  
         }
     }
+    const car = new Car("BMW");
 }
