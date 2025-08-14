@@ -1,112 +1,153 @@
-## Combining the Last Two Commits Using Interactive Rebase
+## Other Common Interactive Rebase Workflows
 
-### 1. View the commit history
+### 1. Reordering Commits
 
-Check recent commits to determine how far back you want to rebase:
+You can change the order of commits to make your history more logical.
 
-```bash
-git log --oneline
-```
+#### Start interactive rebase
 
----
-
-### 2. Start interactive rebase
-
-Since the goal is to combine the last two commits, rebase the last two:
+Decide how many commits back you want to reorder, then:
 
 ```bash
-git rebase -i HEAD~2
+git rebase -i HEAD~N
 ```
+Replace `N` with the number of commits you want to view.
+
+#### Reorder in the editor
+
+In the opened editor, move the lines up or down to reorder commits. For example:
+
+```
+pick a1b2c3 Feature A
+pick d4e5f6 Feature B
+pick 123abc Feature C
+```
+
+To move "Feature C" before "Feature B":
+
+```
+pick a1b2c3 Feature A
+pick 123abc Feature C
+pick d4e5f6 Feature B
+```
+
+Save and close the editor by pressing `Esc`, then type `:wq` and press `Enter`. Resolve any conflicts if prompted.
 
 ---
 
-### 3. Mark commits for squash
+### 2. Editing a Commit Message
 
-An editor (e.g., Vim) will open showing the last two commits:
+You can change the message of any commit.
 
-```
-pick a1b2c3 Commit message 1
-pick d4e5f6 Commit message 2
-```
-
-Change the second `pick` to `squash` (or `s`):
-
-```
-pick a1b2c3 Commit message 1
-squash d4e5f6 Commit message 2
-```
-
-This merges commit 2 into commit 1.
-
-Save and close the editor.
-
----
-
-### 4. Edit the commit message
-
-Git will open another editor showing both commit messages, something like:
-
-```
-# This is a combination of 2 commits.
-# The first commit’s message is:
-Commit message 1
-
-# The following commit message will also be included:
-Commit message 2
-```
-
-Delete unnecessary lines and write the final combined commit message.
-Example:
-
-```
-Combined: Git basics and save local changes
-```
-
-In Vim:
-
-* Press `i` to enter Insert mode.
-* Edit the text as needed.
-* Press `Esc`, then type `:wq` and press Enter to save and exit.
-
----
-
-### 5. Continue or finish rebase
-
-If no conflicts occur, Git completes the rebase automatically.
-If conflicts appear:
+#### Start interactive rebase
 
 ```bash
-# Resolve conflicts in the affected files
-git add <file>
+git rebase -i HEAD~N
+```
+
+#### Mark commit for editing
+
+Change `pick` to `reword` (or `r`) for the commit you want to edit:
+
+```
+pick a1b2c3 Feature A
+reword d4e5f6 Typo fix
+pick 123abc Feature C
+```
+
+Save and close. Git will open an editor for the commit message. Edit as needed, then save and exit.
+
+---
+
+### 3. Splitting a Commit
+
+Break a single commit into multiple smaller commits.
+
+#### Start interactive rebase
+
+```bash
+git rebase -i HEAD~N
+```
+
+#### Mark commit for editing
+
+Change `pick` to `edit` for the commit you want to split:
+
+```
+pick a1b2c3 Feature A
+edit d4e5f6 Large commit to split
+pick 123abc Feature C
+```
+
+Save and close. When Git stops at the commit:
+
+```bash
+git reset HEAD^
+```
+
+Now, your changes are unstaged. Stage and commit them in smaller pieces:
+
+```bash
+git add <file1>
+git commit -m "Part 1"
+git add <file2>
+git commit -m "Part 2"
+```
+
+Continue the rebase:
+
+```bash
 git rebase --continue
 ```
 
 ---
 
-### 6. Push the changes to the remote
+### 4. Dropping a Commit
 
-Since history was rewritten, a normal push will fail. Use force push:
+Remove a commit from history.
 
-```bash
-git push --force
-```
-
-For a safer alternative that prevents overwriting others’ work:
+#### Start interactive rebase
 
 ```bash
-git push --force-with-lease
+git rebase -i HEAD~N
 ```
+
+#### Remove the line
+
+In the editor, delete the line of the commit you want to drop (by double-clicking `d`):
+
+```
+pick a1b2c3 Feature A
+pick d4e5f6 Buggy commit   # <-- delete this line
+pick 123abc Feature C
+```
+
+Save and close. The commit will be removed.
 
 ---
 
-### Summary of Key Commands
+### 5. Fixing Up Commits
+
+Combine a fix or small change into an earlier commit without editing the commit message.
+
+#### Start interactive rebase
 
 ```bash
-git log --oneline
-git rebase -i HEAD~2
-# Change pick to squash in editor
-# Edit commit message in next editor
-git push --force
+git rebase -i HEAD~N
 ```
 
+#### Mark commit for fixup
+
+Change `pick` to `fixup` (or `f`) for the commit you want to merge into the previous one:
+
+```
+pick a1b2c3 Initial feature
+fixup d4e5f6 Minor fix
+```
+
+Save and close. The fix will be merged into the previous commit, discarding the fix's commit message.
+
 ---
+
+**Note:** After any interactive rebase that rewrites history, use `git push --force-with-lease` to update the remote branch safely.
+
