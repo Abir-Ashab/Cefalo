@@ -106,10 +106,32 @@ Think of it like:
 ## Example Request Flow
 
 ```
-Client → Middleware → Guard → Interceptor (before) → Pipe → Controller → Service
-                    → Interceptor (after) → Response
-                           ↑
-                    Exception Filter (if error)
+Client
+   ↓
+Middleware   → (Pre-process request: logging, token parsing, etc.)
+   ↓
+Guard        → (Check if request is allowed: auth, roles, etc.)
+   ↓
+Interceptor (before) → (Log, measure time, modify request)
+   ↓
+Pipe (ValidationPipe using DTO + Decorators) 
+   ↓
+Controller (decorated with @Controller + route decorators)
+   ↓
+  └── Method decorators (@Get, @Post, @Body, @Param, etc.)
+   ↓
+Service (business logic)
+   ↓
+Repository/Database
+   ↓
+Mapper (convert Entity → DTO for response)
+   ↓
+Interceptor (after) → (Transform response, logging, etc.)
+   ↓
+Exception Filter (if error occurs anywhere)
+   ↓
+Response → Back to Client
+
 ```
 
 ---
